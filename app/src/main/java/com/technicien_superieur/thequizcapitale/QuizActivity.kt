@@ -1,5 +1,6 @@
 package com.technicien_superieur.thequizcapitale
 
+import android.content.Context
 import android.content.DialogInterface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -51,6 +52,9 @@ class QuizActivity : AppCompatActivity() {
 
 
         if (currentQuizIndex >= quizs.size) { // Partie terminé
+
+            val sharedPreferences = getSharedPreferences("com.technicien_superieur.thequizcapitale", Context.MODE_PRIVATE)
+            sharedPreferences.edit().putInt("userScore", numberOfGoodAnswers).apply()
 
             var alert = AlertDialog.Builder(this)
             alert.setTitle("Partie terminé!")
