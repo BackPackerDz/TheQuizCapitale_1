@@ -8,14 +8,13 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_quiz.*
+import java.util.*
 
 class QuizActivity : AppCompatActivity() {
-
 
     var quizs = ArrayList<Quiz>()
     var numberOfGoodAnswers: Int = 0
     var currentQuizIndex: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +25,8 @@ class QuizActivity : AppCompatActivity() {
         quizs.add(Quiz("Quelle est la capitale de l'Angola ?", "Alger", "Paris", "Luanda", 3))
         quizs.add(Quiz("Quelle est la capitale de l'Autriche ?", "Alger", "Vienne", "Marseille", 2))
 
+        //Pour mélanger les questions
+        Collections.shuffle(quizs);
 
         showQuestion(quizs.get(currentQuizIndex))
     }
